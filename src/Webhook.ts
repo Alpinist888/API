@@ -45,12 +45,7 @@ class Webhook {
         const response = await fetch(this.baseUrlv2 + encodeURI(url), options);
 
         if (response.ok) {
-            if (method === 'DELETE') {
-                return await response.text();
-            } else {
-                return await response.json();
-            }
-            
+            return await response.json();
         }
 
         throw new Error(`Problem with request. ${response.status} - ${response.statusText}`);
